@@ -9,20 +9,15 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State var tapCount = 0
+
     var body: some View {
-        NavigationView{
-            Form {
-                Section {
-                    Text("Hello, World!")
-                }
-                Section {
-                    Text("Hello, World!")
-                    Text("Hello, World!")
-                }
-            }
-            .navigationBarTitle("SwiftUI")
+        Button("Tap Count: \(tapCount)") {
+            self.tapCount += 1
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
