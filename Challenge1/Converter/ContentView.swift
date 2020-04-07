@@ -14,19 +14,30 @@ struct ContentView: View {
     @State private var inputUnit = 1
     @State private var outputUnit = 1
 
-    // Conversion mapping of each unit to metres
-    private let units: KeyValuePairs<String, Double> = [
-        "mm": 0.001,
-        "m": 1,
-        "km": 1000,
-        "in": 0.0254,
-        "ft": 0.3048,
-        "mi": 1609.344,
+    private let units: [UnitLength] = [
+        .millimeters,
+        .meters,
+        .kilometers,
+        .inches,
+        .feet,
+        .miles,
+        .astronomicalUnits,
+        .lightyears,
     ]
 
-    private var outputValue: Double {
-        guard let input = Double(inputValue) else { return 0 }
-        return input * units[inputUnit].value / units[outputUnit].value
+    private var measurementFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .providedUnit
+        formatter.unitStyle = .long
+        return formatter
+    } ()
+
+    private var outputValue: String {
+        guard let input = Double(inputValue) else { return "" }
+        return measurementFormatter.string(
+            from: Measurement(value: input, unit: units[inputUnit])
+                .converted(to: units[outputUnit])
+        )
     }
 
     var body: some View {
@@ -36,7 +47,7 @@ struct ContentView: View {
                     TextField("Value", text: $inputValue)
                     Picker("Unit", selection: $inputUnit) {
                         ForEach(0..<units.count) {
-                            Text(self.units[$0].key)
+                            Text(self.units[$0].symbol)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
@@ -44,7 +55,7 @@ struct ContentView: View {
                 Section(header: Text("Output")) {
                     Picker("Unit", selection: $outputUnit) {
                         ForEach(0..<units.count) {
-                            Text(self.units[$0].key)
+                            Text(self.units[$0].symbol)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
