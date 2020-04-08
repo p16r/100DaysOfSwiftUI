@@ -10,10 +10,36 @@ import SwiftUI
 
 struct ContentView: View {
 
+    private let sixColorGradient: Gradient = Gradient(
+        colors: [.green, .yellow, .orange, .red, .purple, .blue]
+    )
+
     var body: some View {
-        ZStack {
-            Color.red.edgesIgnoringSafeArea(.all)
-            Text("Hello, world!")
+        VStack {
+            ZStack {
+                LinearGradient(
+                    gradient: sixColorGradient,
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+                Text("Linear Gradient")
+            }
+            ZStack {
+                RadialGradient(
+                    gradient: sixColorGradient,
+                    center: .center,
+                    startRadius: 20,
+                    endRadius: 200
+                )
+                Text("Radial Gradient")
+            }
+            ZStack {
+                AngularGradient(
+                    gradient: sixColorGradient,
+                    center: .center
+                )
+                Text("Angular Gradient")
+            }
         }
     }
 
