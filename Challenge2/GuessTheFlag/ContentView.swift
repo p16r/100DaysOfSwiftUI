@@ -10,16 +10,18 @@ import SwiftUI
 
 struct ContentView: View {
 
+    @State private var isShowingAlert = false
+
     var body: some View {
-        Button(
-            action: {
-                print("PONG")
-            }
-        ) {
-            HStack {
-                Image(systemName: "bolt.circle.fill")
-                Text("PING")
-            }
+        Button("Show Alert") {
+            self.isShowingAlert = true
+        }
+        .alert(isPresented: $isShowingAlert) { () -> Alert in
+            Alert(
+                title: Text("Hello SwiftUI"),
+                message: Text("Lorem ipsum dolor sit amet."),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 
