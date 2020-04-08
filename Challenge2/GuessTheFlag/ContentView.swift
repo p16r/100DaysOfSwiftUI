@@ -9,9 +9,27 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            HStack {
+                Text("0")
+                Text("1")
+                Text("2")
+            }
+            HStack {
+                Text("3")
+                Text("4")
+                Text("5")
+            }
+            HStack {
+                Text("6")
+                Text("7")
+                Text("8")
+            }
+        }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
