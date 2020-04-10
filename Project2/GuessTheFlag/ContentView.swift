@@ -25,9 +25,10 @@ struct ContentView: View {
     ]
         .shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
+    @State private var selectedAnswer = 0
+    @State private var answerIsCorrect = false
 
     @State private var isShowingAlert = false
-    @State private var scoreTitle = ""
     @State private var score = 0
 
     var body: some View {
@@ -68,10 +69,14 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .alert(isPresented: $isShowingAlert) { () -> Alert in
+        .alert(isPresented: $isShowingAlert) {
             Alert(
-                title: Text(scoreTitle),
-                message: Text("Your score is \(score)"),
+                title: Text(answerIsCorrect ? "Correct" : "Wrong"),
+                message: Text(
+                    answerIsCorrect
+                        ? "Your score is \(score)."
+                        : "You chose the flag of \(countries[selectedAnswer])."
+                ),
                 dismissButton: .default(Text("Continue")) {
                     self.askQuestion()
                 }
@@ -80,13 +85,9 @@ struct ContentView: View {
     }
 
     func flagTapped(_ number: Int) {
-        if number == correctAnswer {
-            scoreTitle = "Correct"
-            score += 1
-        } else {
-            scoreTitle = "Wrong"
-            score = 0
-        }
+        selectedAnswer = number
+        answerIsCorrect = number == correctAnswer
+        score = answerIsCorrect ? score + 1 : 0
         isShowingAlert = true
     }
 
