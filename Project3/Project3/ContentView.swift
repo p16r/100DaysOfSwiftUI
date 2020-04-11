@@ -9,19 +9,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var useRedText = false
+
+    let motto1 = Text("Draco")
+    let motto2 = Text("dormiens")
+        .font(.system(.body, design: .monospaced))
+    var motto3: some View {
+        Text("nunquam")
+            .font(.system(.body, design: .serif))
+    }
+    var motto4: some View = {
+        Text("titillandus")
+            .font(.system(.body, design: .rounded))
+    } ()
 
     var body: some View {
-        VStack {
-            Text("Gryffindor")
-                .font(.largeTitle)
-            Text("Hufflepuff")
-                .font(.body)
-            Text("Ravenclaw")
-                .font(.headline)
-            Text("Slytherin")
+        HStack {
+            motto1
+            motto2
+            motto3
+            motto4
         }
-            .font(.caption)
     }
 }
 
