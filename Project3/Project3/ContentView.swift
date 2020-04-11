@@ -8,28 +8,32 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CapsuleText: View {
 
-    let motto1 = Text("Draco")
-    let motto2 = Text("dormiens")
-        .font(.system(.body, design: .monospaced))
-    var motto3: some View {
-        Text("nunquam")
-            .font(.system(.body, design: .serif))
-    }
-    var motto4: some View = {
-        Text("titillandus")
-            .font(.system(.body, design: .rounded))
-    } ()
+    var text: String
 
     var body: some View {
-        HStack {
-            motto1
-            motto2
-            motto3
-            motto4
+        Text(text)
+            .font(.largeTitle)
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.blue)
+            .clipShape(Capsule())
+    }
+
+}
+
+struct ContentView: View {
+
+    var body: some View {
+        VStack(spacing: 16) {
+            CapsuleText(text: "First")
+                .foregroundColor(.white)
+            CapsuleText(text: "Second")
+                .foregroundColor(.yellow)
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
