@@ -8,17 +8,41 @@
 
 import SwiftUI
 
-struct CapsuleText: View {
+private struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(.white)
+            .padding()
+            .background(Color.blue)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+    }
+}
 
+struct Watermark: ViewModifier {
     var text: String
 
-    var body: some View {
-        Text(text)
-            .font(.largeTitle)
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .clipShape(Capsule())
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            Text(text)
+                .font(.caption)
+                .foregroundColor(.white)
+                .padding(4)
+                .background(Color.black)
+                .opacity(0.75)
+        }
+    }
+}
+
+extension View {
+
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+
+    func watermarked(with text: String) -> some View {
+        self.modifier(Watermark(text: text))
     }
 
 }
@@ -26,12 +50,11 @@ struct CapsuleText: View {
 struct ContentView: View {
 
     var body: some View {
-        VStack(spacing: 16) {
-            CapsuleText(text: "First")
-                .foregroundColor(.white)
-            CapsuleText(text: "Second")
-                .foregroundColor(.yellow)
-        }
+        Text("Hello, world!")
+            .titleStyle()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .watermarked(with: "Shutterstock")
+            .background(Color.green)
     }
 
 }
