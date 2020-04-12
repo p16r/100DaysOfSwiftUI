@@ -17,7 +17,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 * [Day 21][day-021] – Project 2, part two:    [Complete][day-021-tag]
 * [Day 22][day-022] – Project 2, part three:  [Complete][day-022-tag]
 * [Day 23][day-023] – Project 3, part one:    [Complete][day-023-tag]
-* [Day 24][day-024] – Project 3, part two
+* [Day 24][day-024] – Project 3, part two:    [Complete][day-024-tag]
 
 
 
