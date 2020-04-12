@@ -8,6 +8,23 @@
 
 import SwiftUI
 
+struct FlagImageView: View {
+
+    let country: String
+
+    var body: some View {
+        Image(country)
+            .renderingMode(.original)
+            .clipShape(Capsule())
+            .overlay(
+                Capsule()
+                    .stroke(Color.black, lineWidth: 1)
+            )
+            .shadow(color: .black, radius: 2)
+    }
+
+}
+
 struct ContentView: View {
 
     @State private var countries = [
@@ -54,14 +71,7 @@ struct ContentView: View {
                             self.flagTapped(number)
                         }
                     ) {
-                        Image(self.countries[number])
-                            .renderingMode(.original)
-                            .clipShape(Capsule())
-                            .overlay(
-                                Capsule()
-                                    .stroke(Color.black, lineWidth: 1)
-                            )
-                            .shadow(color: .black, radius: 2)
+                        FlagImageView(country: self.countries[number])
                     }
                 }
                 Text("Score: \(score)")
