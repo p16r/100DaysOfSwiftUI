@@ -9,21 +9,21 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 
 ### Days 16-24: Starting SwiftUI
 
-* [Day 16][day-016] – Project 1, part one:    [Complete][day-016-tag]
-* [Day 17][day-017] – Project 1, part two:    [Complete][day-017-tag]
-* [Day 18][day-018] – Project 1, part three:  [Complete][day-018-tag]
-* [Day 19][day-019] – Challenge day:          [Complete][day-019-tag]
-* [Day 20][day-020] – Project 2, part one:    [Complete][day-020-tag]
-* [Day 21][day-021] – Project 2, part two:    [Complete][day-021-tag]
-* [Day 22][day-022] – Project 2, part three:  [Complete][day-022-tag]
-* [Day 23][day-023] – Project 3, part one:    [Complete][day-023-tag]
-* [Day 24][day-024] – Project 3, part two:    [Complete][day-024-tag]
+* [Day 16][day-016] – Project 1, part one:        [Complete][day-016-tag]
+* [Day 17][day-017] – Project 1, part two:        [Complete][day-017-tag]
+* [Day 18][day-018] – Project 1, part three:      [Complete][day-018-tag]
+* [Day 19][day-019] – Challenge day:              [Complete][day-019-tag]
+* [Day 20][day-020] – Project 2, part one:        [Complete][day-020-tag]
+* [Day 21][day-021] – Project 2, part two:        [Complete][day-021-tag]
+* [Day 22][day-022] – Project 2, part three:      [Complete][day-022-tag]
+* [Day 23][day-023] – Project 3, part one:        [Complete][day-023-tag]
+* [Day 24][day-024] – Project 3, part two:        [Complete][day-024-tag]
 
 
 
 ### Day 25: Consolidation II
 
-* [Day 25][day-025] – Milestone: Projects 1-3
+* [Day 25][day-025] – Milestone: Projects 1-3:    [Complete][day-025-tag]
 
 ### Days 26-34: Expanding your skills
 
