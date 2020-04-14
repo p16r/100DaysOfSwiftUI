@@ -13,12 +13,9 @@ struct ContentView: View {
     @State private var wakeUp = Date()
 
     var body: some View {
-        DatePicker(
-            "Please enter a date: ",
-            selection: $wakeUp,
-            in: Date()...
-        )
-            .labelsHidden()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return Text(formatter.string(from: Date()))
     }
 }
 
