@@ -13,6 +13,7 @@
 		05004A572445FF4B00BE8787 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05004A562445FF4B00BE8787 /* Assets.xcassets */; };
 		05004A5A2445FF4B00BE8787 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05004A592445FF4B00BE8787 /* Preview Assets.xcassets */; };
 		05004A5D2445FF4B00BE8787 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05004A5B2445FF4B00BE8787 /* LaunchScreen.storyboard */; };
+		058048EE24A235350082CC29 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 058048ED24A235350082CC29 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		05004A592445FF4B00BE8787 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		05004A5C2445FF4B00BE8787 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05004A5E2445FF4B00BE8787 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		058048ED24A235350082CC29 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = SleepCalculator.mlmodel; path = BetterRest/SleepCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				05004A502445FF4B00BE8787 /* AppDelegate.swift */,
 				05004A522445FF4B00BE8787 /* SceneDelegate.swift */,
+				058048ED24A235350082CC29 /* SleepCalculator.mlmodel */,
 				05004A542445FF4B00BE8787 /* ContentView.swift */,
 				05004A562445FF4B00BE8787 /* Assets.xcassets */,
 				05004A5B2445FF4B00BE8787 /* LaunchScreen.storyboard */,
@@ -148,6 +151,7 @@
 			files = (
 				05004A512445FF4B00BE8787 /* AppDelegate.swift in Sources */,
 				05004A532445FF4B00BE8787 /* SceneDelegate.swift in Sources */,
+				058048EE24A235350082CC29 /* SleepCalculator.mlmodel in Sources */,
 				05004A552445FF4B00BE8787 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +220,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
