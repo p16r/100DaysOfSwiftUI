@@ -27,7 +27,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 
 ### Days 26-34: Expanding your skills
 
-* [Day 26][day-026] – Project 4, part one
+* [Day 26][day-026] – Project 4, part one:        [Complete][day-026-tag]
 * [Day 27][day-027] – Project 4, part two
 * [Day 28][day-028] – Project 4, part three
 * [Day 29][day-029] – Project 5, part one
