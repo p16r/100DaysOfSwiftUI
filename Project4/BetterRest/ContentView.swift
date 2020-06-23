@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State private var wakeUp = Date()
+
     var body: some View {
-        Text("Hello, World!")
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return Text(formatter.string(from: Date()))
     }
 }
 
