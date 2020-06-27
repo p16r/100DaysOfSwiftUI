@@ -12,15 +12,16 @@ struct ContentView: View {
     let people = ["Finn", "Leia", "Luke", "Rey"]
 
     var body: some View {
-        if
-            let fileURL = Bundle.main.url(
-                forResource: "some-file",
-                withExtension: "txt"
-            ),
-            let fileContents = try? String(contentsOf: fileURL)
-        {
-            print(fileContents)
-        }
+        let word = "SWift"
+        let misspelledRange = UITextChecker().rangeOfMisspelledWord(
+            in: word,
+            range: NSRange(location: 0, length: word.utf16.count),
+            startingAt: 0,
+            wrap: false,
+            language: "en"
+        )
+        let noMisspellingsFound = misspelledRange.location == NSNotFound
+        print(noMisspellingsFound)
         return List(people, id: \.self) {
             Text($0)
         }
