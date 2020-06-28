@@ -31,6 +31,7 @@ struct ContentView: View {
                 .listStyle(PlainListStyle())
             }
             .navigationBarTitle(rootWord)
+            .onAppear(perform: startGame)
         }
     }
 
@@ -43,6 +44,19 @@ struct ContentView: View {
 
         usedWords.insert(answer, at: 0)
         newWord = ""
+    }
+
+    func startGame() {
+        guard let word = Bundle.main.url(
+                forResource: "start",
+                withExtension: "txt"
+            )
+            .flatMap({ try? String(contentsOf: $0) })
+            .flatMap({ $0.components(separatedBy: "\n").randomElement() })
+        else {
+            fatalError("Could not load start.txt from Bundle.")
+        }
+        rootWord = word
     }
 
 }
