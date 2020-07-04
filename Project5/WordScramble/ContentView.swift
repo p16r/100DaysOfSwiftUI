@@ -53,6 +53,22 @@ struct ContentView: View {
 
         if answer.isEmpty { return }
 
+        guard isNotRootWord(word: answer) else {
+            wordError(
+                title: "Use A Different Word",
+                message: "Can't use original word."
+            )
+            return
+        }
+
+        guard isLongEnough(word: answer) else {
+            wordError(
+                title: "Word Too Short",
+                message: "Use a longer word."
+            )
+            return
+        }
+
         guard isOriginal(word: answer) else {
             wordError(
                 title: "Word Used Already",
@@ -79,6 +95,14 @@ struct ContentView: View {
 
         usedWords.insert(answer, at: 0)
         newWord = ""
+    }
+
+    func isLongEnough(word: String) -> Bool {
+        word.count >= 3
+    }
+
+    func isNotRootWord(word: String) -> Bool {
+        word != rootWord
     }
 
     func isOriginal(word: String) -> Bool {
