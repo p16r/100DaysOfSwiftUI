@@ -34,6 +34,7 @@ struct ContentView: View {
                 }
                 .listStyle(PlainListStyle())
             }
+            .navigationBarItems(leading: Button("Reset", action: startGame))
             .navigationBarTitle(rootWord)
             .onAppear(perform: startGame)
             .alert(isPresented: $showingError) {
@@ -141,6 +142,7 @@ struct ContentView: View {
             fatalError("Could not load start.txt from Bundle.")
         }
         rootWord = word
+        usedWords = []
     }
 
 }
