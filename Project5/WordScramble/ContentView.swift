@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
+    @State private var score = 0
 
     var body: some View {
         NavigationView {
@@ -32,7 +33,12 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
-                .listStyle(PlainListStyle())
+                    .listStyle(PlainListStyle())
+                HStack {
+                    Text("Score:")
+                    Text("\(score)").fontWeight(.bold)
+                }
+                .font(.title)
             }
             .navigationBarItems(leading: Button("Reset", action: startGame))
             .navigationBarTitle(rootWord)
@@ -95,6 +101,7 @@ struct ContentView: View {
         }
 
         usedWords.insert(answer, at: 0)
+        score += answer.count + 1
         newWord = ""
     }
 
@@ -143,6 +150,7 @@ struct ContentView: View {
         }
         rootWord = word
         usedWords = []
+        score = 0
     }
 
 }
