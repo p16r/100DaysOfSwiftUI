@@ -13,15 +13,26 @@ struct ContentView: View {
 
     var body: some View {
         Button("Tap") {
-            animationAmount += 1
+//            animationAmount += 1
         }
         .padding(32)
         .background(Color.accentColor)
         .foregroundColor(.white)
         .clipShape(Circle())
-        .scaleEffect(animationAmount)
-        .blur(radius: (animationAmount - 1) * 2)
-        .animation(.default)
+        .overlay(
+            Circle()
+                .stroke(Color.accentColor)
+                .scaleEffect(animationAmount)
+                .opacity(Double(2 - animationAmount))
+        )
+        .animation(
+            Animation
+                .easeInOut(duration: 1)
+                .repeatForever(autoreverses: false)
+        )
+        .onAppear {
+            animationAmount = 2
+        }
     }
 
 }
