@@ -9,23 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var animationAmount = 0.0
+    @State private var isEnabled = false
 
     var body: some View {
         VStack {
             Button("Tap") {
-                withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
-                    animationAmount += 360
-                }
+                isEnabled.toggle()
             }
-            .padding(32)
-            .background(Color.accentColor)
+            .frame(width: 256, height: 256)
+            .background(isEnabled ? Color.blue: Color.red)
+            .animation(nil)
             .foregroundColor(.white)
-            .clipShape(Circle())
-            .rotation3DEffect(
-                .degrees(animationAmount),
-                axis: (x: 0, y: 1, z: 0)
-            )
+            .clipShape(RoundedRectangle(cornerRadius: isEnabled ? 64 : 0))
+            .animation(.interpolatingSpring(stiffness: 10, damping: 1))
         }
     }
 
