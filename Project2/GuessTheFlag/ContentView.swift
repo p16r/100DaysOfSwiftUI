@@ -48,6 +48,8 @@ struct ContentView: View {
     @State private var isShowingAlert = false
     @State private var score = 0
 
+    @State private var rotationDegrees = 0.0
+
     var body: some View {
         ZStack {
             LinearGradient(
@@ -66,13 +68,16 @@ struct ContentView: View {
                         .fontWeight(.black)
                 }
                 ForEach(0..<3) { number in
-                    Button(
-                        action: {
-                            self.flagTapped(number)
+                    Button {
+                        withAnimation {
+                            rotationDegrees = 360
+                            flagTapped(number)
                         }
-                    ) {
-                        FlagImageView(country: self.countries[number])
-                    }
+                    } label: { FlagImageView(country: self.countries[number]) }
+                    .rotation3DEffect(
+                        .degrees(number == correctAnswer ? rotationDegrees : 0),
+                        axis: (x: 0, y: 1, z: 0)
+                    )
                 }
                 Text("Score: \(score)")
                     .foregroundColor(.white)
@@ -88,7 +93,10 @@ struct ContentView: View {
                         : "You chose the flag of \(countries[selectedAnswer])."
                 ),
                 dismissButton: .default(Text("Continue")) {
-                    self.askQuestion()
+                    withAnimation {
+                        rotationDegrees = 0
+                        askQuestion()
+                    }
                 }
             )
         }
