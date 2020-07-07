@@ -49,6 +49,7 @@ struct ContentView: View {
     @State private var score = 0
 
     @State private var rotationDegrees = 0.0
+    @State private var opacity = 1.0
 
     var body: some View {
         ZStack {
@@ -71,6 +72,7 @@ struct ContentView: View {
                     Button {
                         withAnimation {
                             rotationDegrees = 360
+                            opacity = 0.25
                             flagTapped(number)
                         }
                     } label: { FlagImageView(country: self.countries[number]) }
@@ -78,6 +80,7 @@ struct ContentView: View {
                         .degrees(number == correctAnswer ? rotationDegrees : 0),
                         axis: (x: 0, y: 1, z: 0)
                     )
+                    .opacity(number == correctAnswer ? 1 : opacity)
                 }
                 Text("Score: \(score)")
                     .foregroundColor(.white)
@@ -95,6 +98,7 @@ struct ContentView: View {
                 dismissButton: .default(Text("Continue")) {
                     withAnimation {
                         rotationDegrees = 0
+                        opacity = 1
                         askQuestion()
                     }
                 }
