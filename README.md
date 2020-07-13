@@ -41,7 +41,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 
 ### Day 35: Consolidation III
 
-* [Day 35][day-035] – Milestone: Projects 4-6
+* [Day 35][day-035] – Milestone: Projects 4-6:    [Complete][day-035-tag]
 
 
 
