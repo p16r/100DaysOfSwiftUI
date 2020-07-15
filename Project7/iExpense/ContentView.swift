@@ -7,33 +7,28 @@
 
 import SwiftUI
 
-struct SecondView: View {
-
-    @Environment(\.presentationMode) var presentationMode
-
-    let name: String
-
-    var body: some View {
-        VStack {
-            Text("Hello, \(name)!")
-            Button("Dismiss") {
-                presentationMode.wrappedValue.dismiss()
-            }
-        }
-    }
-
-}
-
 struct ContentView: View {
 
-    @State var isShowingSheet = false
+    @State var numbers: [Int] = []
+    @State private var currentNumber = 1
 
     var body: some View {
-        Button("Show Sheet") {
-            isShowingSheet = true
-        }
-        .sheet(isPresented: $isShowingSheet) {
-            SecondView(name: "@prtmshk")
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(numbers, id: \.self) {
+                        Text(String(describing: $0))
+                    }
+                    .onDelete { indexSet in
+                        numbers.remove(atOffsets: indexSet)
+                    }
+                }
+                Button("Add number") {
+                    numbers.append(currentNumber)
+                    currentNumber += 1
+                }
+            }
+            .navigationBarItems(trailing: EditButton())
         }
     }
 
