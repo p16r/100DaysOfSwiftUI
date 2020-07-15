@@ -9,26 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var numbers: [Int] = []
-    @State private var currentNumber = 1
+    @State private var tapCount = UserDefaults.standard.integer(forKey: "taps")
 
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    ForEach(numbers, id: \.self) {
-                        Text(String(describing: $0))
-                    }
-                    .onDelete { indexSet in
-                        numbers.remove(atOffsets: indexSet)
-                    }
-                }
-                Button("Add number") {
-                    numbers.append(currentNumber)
-                    currentNumber += 1
-                }
-            }
-            .navigationBarItems(trailing: EditButton())
+        Button("Taps: \(tapCount)") {
+            tapCount += 1
+            UserDefaults.standard.set(tapCount, forKey: "taps")
         }
     }
 
