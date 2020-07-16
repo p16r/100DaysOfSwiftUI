@@ -7,25 +7,43 @@
 
 import SwiftUI
 
-struct User {
+struct ExpenseItem {
 
-    let firstName: String
-    let lastName: String
+    let name: String
+    let type: String
+    let amount: Int
+
+}
+
+class Expenses: ObservableObject {
+
+    @Published var items: [ExpenseItem] = []
 
 }
 
 struct ContentView: View {
 
-    @State private var user = User(
-        firstName: "Prathamesh",
-        lastName: "Kowarkar"
-    )
+    @ObservedObject var expenses = Expenses()
 
     var body: some View {
-        Button("Save User") {
-            if let data = try? JSONEncoder().encode(user) {
-                UserDefaults.standard.set(data, forKey: "user")
+        NavigationView {
+            List {
+                ForEach(expenses.items, id: \.name) {
+                    Text($0.name)
+                }
+                .onDelete { indexSet in
+                    expenses.items.remove(atOffsets: indexSet)
+                }
             }
+            .navigationTitle("iExpense")
+            .navigationBarItems(
+                trailing: Button {
+                    let expense = ExpenseItem(name: "Name", type: "Type", amount: 5)
+                    expenses.items.append(expense)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            )
         }
     }
 
