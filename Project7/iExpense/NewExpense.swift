@@ -30,6 +30,14 @@ struct NewExpense: View {
                     .keyboardType(.numberPad)
             }
             .navigationTitle("New Expense")
+            .navigationBarItems(
+                trailing: Button("Save") {
+                    guard let amount = Int(amount) else { return }
+                    expenses.items.append(
+                        ExpenseItem(name: name, type: type, amount: amount)
+                    )
+                }
+            )
         }
     }
 
