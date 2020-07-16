@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0580A5F224C0B17000FDD194 /* NewExpense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0580A5F124C0B17000FDD194 /* NewExpense.swift */; };
 		05D1C76B24BF1B9400C90DF7 /* iExpenseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D1C76A24BF1B9400C90DF7 /* iExpenseApp.swift */; };
 		05D1C76D24BF1B9400C90DF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D1C76C24BF1B9400C90DF7 /* ContentView.swift */; };
 		05D1C76F24BF1B9500C90DF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05D1C76E24BF1B9500C90DF7 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0580A5F124C0B17000FDD194 /* NewExpense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpense.swift; sourceTree = "<group>"; };
 		05D1C76724BF1B9400C90DF7 /* iExpense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iExpense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D1C76A24BF1B9400C90DF7 /* iExpenseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iExpenseApp.swift; sourceTree = "<group>"; };
 		05D1C76C24BF1B9400C90DF7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 			children = (
 				05D1C76A24BF1B9400C90DF7 /* iExpenseApp.swift */,
 				05D1C76C24BF1B9400C90DF7 /* ContentView.swift */,
+				0580A5F124C0B17000FDD194 /* NewExpense.swift */,
 				05D1C76E24BF1B9500C90DF7 /* Assets.xcassets */,
 				05D1C77324BF1B9500C90DF7 /* Info.plist */,
 				05D1C77024BF1B9500C90DF7 /* Preview Content */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0580A5F224C0B17000FDD194 /* NewExpense.swift in Sources */,
 				05D1C76D24BF1B9400C90DF7 /* ContentView.swift in Sources */,
 				05D1C76B24BF1B9400C90DF7 /* iExpenseApp.swift in Sources */,
 			);

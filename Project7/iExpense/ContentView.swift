@@ -25,6 +25,7 @@ class Expenses: ObservableObject {
 struct ContentView: View {
 
     @ObservedObject var expenses = Expenses()
+    @State var isShowingNewExpense = false
 
     var body: some View {
         NavigationView {
@@ -39,12 +40,14 @@ struct ContentView: View {
             .navigationTitle("iExpense")
             .navigationBarItems(
                 trailing: Button {
-                    let expense = ExpenseItem(name: "Name", type: "Type", amount: 5)
-                    expenses.items.append(expense)
+                    isShowingNewExpense = true
                 } label: {
                     Image(systemName: "plus")
                 }
             )
+            .sheet(isPresented: $isShowingNewExpense) {
+                NewExpense(expenses: expenses)
+            }
         }
     }
 
