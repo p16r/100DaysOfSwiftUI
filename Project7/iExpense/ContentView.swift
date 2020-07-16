@@ -53,24 +53,47 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) {
-                    Text($0.name)
+                ForEach(expenses.items) { expense in
+                    ExpenseView(expense: expense)
                 }
-                .onDelete { indexSet in
-                    expenses.items.remove(atOffsets: indexSet)
-                }
+                    .onDelete(perform: removeExpense)
             }
             .navigationTitle("iExpense")
-            .navigationBarItems(
-                trailing: Button {
-                    isShowingNewExpense = true
-                } label: {
-                    Image(systemName: "plus")
-                }
-            )
+            .navigationBarItems(trailing: saveButton)
             .sheet(isPresented: $isShowingNewExpense) {
                 NewExpense(expenses: expenses)
             }
+        }
+    }
+
+    private var saveButton: some View {
+        Button {
+            isShowingNewExpense = true
+        } label: {
+            Image(systemName: "plus")
+        }
+    }
+
+    private func removeExpense(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
+    }
+
+}
+
+struct ExpenseView: View {
+
+    let expense: ExpenseItem
+
+    var body: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(expense.name)
+                    .font(.headline)
+                Text(expense.type)
+                    .font(.subheadline)
+            }
+            Spacer()
+            Text("$\(expense.amount)")
         }
     }
 
