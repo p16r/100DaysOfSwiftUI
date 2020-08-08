@@ -59,7 +59,7 @@ struct ContentView: View {
                     .onDelete(perform: removeExpense)
             }
             .navigationTitle("iExpense")
-            .navigationBarItems(trailing: saveButton)
+            .navigationBarItems(leading: EditButton(), trailing: saveButton)
             .sheet(isPresented: $isShowingNewExpense) {
                 NewExpense(expenses: expenses)
             }
