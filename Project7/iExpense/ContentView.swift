@@ -59,7 +59,7 @@ struct ContentView: View {
                     .onDelete(perform: removeExpense)
             }
             .navigationTitle("iExpense")
-            .navigationBarItems(trailing: saveButton)
+            .navigationBarItems(leading: EditButton(), trailing: saveButton)
             .sheet(isPresented: $isShowingNewExpense) {
                 NewExpense(expenses: expenses)
             }
@@ -94,6 +94,18 @@ struct ExpenseView: View {
             }
             Spacer()
             Text("$\(expense.amount)")
+                .foregroundColor(color)
+                .padding(.horizontal, 4)
+                .background(color.opacity(0.2))
+                .clipShape(RoundedRectangle(cornerRadius: 4))
+        }
+    }
+
+    var color: Color {
+        switch expense.amount {
+            case 0..<10: return .green
+            case 10..<100: return .orange
+            default: return .red
         }
     }
 
