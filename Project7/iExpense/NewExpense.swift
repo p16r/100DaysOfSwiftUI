@@ -14,6 +14,7 @@ struct NewExpense: View {
     @State var name = ""
     @State var type = "Personal"
     @State var amount = ""
+    @State var isShowingError = false
 
     private static let types = ["Personal", "Business"]
 
@@ -30,10 +31,22 @@ struct NewExpense: View {
                 TextField("Amount", text: $amount)
                     .keyboardType(.numberPad)
             }
+            .alert(isPresented: $isShowingError) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("You entered an incorrect amount."),
+                    dismissButton: .default(Text("Try Again")) {
+                        amount = ""
+                    }
+                )
+            }
             .navigationTitle("New Expense")
             .navigationBarItems(
                 trailing: Button("Save") {
-                    guard let amount = Int(amount) else { return }
+                    guard let amount = Int(amount) else {
+                        isShowingError = true
+                        return
+                    }
                     expenses.items.append(
                         ExpenseItem(name: name, type: type, amount: amount)
                     )
