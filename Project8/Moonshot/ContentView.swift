@@ -9,14 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ScrollView(.vertical) {
-            VStack(spacing: 10) {
-                ForEach(0..<100) {
-                    Text("Item \($0)")
-                        .font(.title)
+        NavigationView {
+            List {
+                ForEach(0..<100) { number in
+                    NavigationLink(destination: Text("Detail \(number)")) {
+                        Text("Item \(number)")
+                    }
                 }
             }
-            .frame(maxWidth: .infinity)
+            .navigationTitle("SwiftUI")
         }
     }
 }
