@@ -50,7 +50,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 * [Day 36][day-036] – Project 7, part one:        [Complete][day-036-tag]
 * [Day 37][day-037] – Project 7, part two:        [Complete][day-037-tag]
 * [Day 38][day-038] – Project 7, part three:      [Complete][day-038-tag]
-* [Day 39][day-039] – Project 8, part one
+* [Day 39][day-039] – Project 8, part one:        [Complete][day-039-tag]
 * [Day 40][day-040] – Project 8, part two
 * [Day 41][day-041] – Project 8, part three
 * [Day 42][day-042] – Project 8, part four
