@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            GeometryReader { proxy in
-                Image("Image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: proxy.size.width)
+        ScrollView(.vertical) {
+            VStack(spacing: 10) {
+                ForEach(0..<100) {
+                    Text("Item \($0)")
+                        .font(.title)
+                }
             }
+            .frame(maxWidth: .infinity)
         }
     }
 }
