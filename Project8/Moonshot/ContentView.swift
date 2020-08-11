@@ -8,35 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+    let missions: [Mission] = Bundle.main.decode("missions.json")
+
     var body: some View {
-        Button("Decode JSON") {
-
-            struct User: Codable {
-
-                let name: String
-                let address: Address
-
-                struct Address: Codable {
-                    let street: String
-                    let city: String
-                }
-
-            }
-
-            let input = """
-            {
-                "name": "Taylor Swift",
-                "address": {
-                    "street": "555, Taylor Swift Avenue",
-                    "city": "Nashville"
+        NavigationView {
+            List(missions) { mission in
+                NavigationLink(destination: Text("DetailView")) {
+                    Image(mission.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 44, height: 44)
+                    VStack(alignment: .leading) {
+                        Text(mission.displayName)
+                            .font(.headline)
+                        Text(mission.formattedLaunchDate)
+                    }
                 }
             }
-            """
-
-            let data = Data(input.utf8)
-            if let user = try? JSONDecoder().decode(User.self, from: data) {
-                print(user.address.city)
-            }
+            .navigationTitle(Text("Moonshot"))
         }
     }
 }
