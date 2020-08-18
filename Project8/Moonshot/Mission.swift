@@ -37,4 +37,18 @@ struct Mission: Codable, Identifiable {
         return formatter.string(from: launchDate)
     }
 
+    static let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
+
+    var astronautNames: String {
+        crew
+            .map(\.name)
+            .compactMap { name in
+                Self.astronauts.first {
+                    $0.id == name
+                }
+            }
+            .map(\.name)
+            .joined(separator: "\n")
+    }
+
 }
