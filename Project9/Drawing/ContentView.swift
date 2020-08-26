@@ -8,39 +8,52 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State private var colorCycle = 0.0
+
     var body: some View {
-        Arc(startAngle: .degrees(-90), endAngle: .degrees(90), clockwise: true)
-            .strokeBorder(Color.blue, lineWidth: 40)
+        VStack {
+            ColorCyclingView(amount: colorCycle)
+                .frame(width: 300, height: 300)
+            Slider(value: $colorCycle)
+        }
     }
 }
 
-struct Arc: InsettableShape {
+struct ColorCyclingView: View {
 
-    var startAngle: Angle
-    var endAngle: Angle
-    var clockwise: Bool
-    var insetAmount: CGFloat = 0
+    var amount = 0.0
+    var steps = 100
 
-    func path(in rect: CGRect) -> Path {
-        let rotationAdjustment = Angle.degrees(90)
-        let modifiedStart = startAngle - rotationAdjustment
-        let modifiedEnd = endAngle - rotationAdjustment
-
-        var path = Path()
-        path.addArc(
-            center: CGPoint(x: rect.midX, y: rect.midY),
-            radius: rect.width / 2 - insetAmount,
-            startAngle: modifiedStart,
-            endAngle: modifiedEnd,
-            clockwise: !clockwise
-        )
-        return path
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Circle()
+                    .inset(by: CGFloat(value))
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Gradient(
+                                colors: [
+                                    self.color(for: value, brightness: 1),
+                                    self.color(for: value, brightness: 0.5)
+                                ]
+                            ),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 2
+                    )
+            }
+        }
+        .drawingGroup()
     }
 
-    func inset(by amount: CGFloat) -> some InsettableShape {
-        var arc = self
-        arc.insetAmount += amount
-        return arc
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(steps) + amount
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
     }
 
 }
