@@ -9,36 +9,50 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var insetAmount: CGFloat = 50
+    @State private var rows = 4
+    @State private var columns = 4
 
     var body: some View {
-        Trapezoid(insetAmount: insetAmount)
-            .frame(width: 200, height: 100)
+        Checkerboard(rows: rows, columns: columns)
             .onTapGesture {
-                withAnimation {
-                    insetAmount = CGFloat.random(in: 10...90)
+                withAnimation(.linear(duration: 3)) {
+                    self.rows = 8
+                    self.columns = 16
                 }
             }
     }
 
 }
 
-struct Trapezoid: Shape {
+struct Checkerboard: Shape {
 
-    var insetAmount: CGFloat
+    var rows: Int
+    var columns: Int
 
-    var animatableData: CGFloat {
-        get { insetAmount }
-        set { insetAmount = newValue }
+    public var animatableData: AnimatablePair<Double, Double> {
+        get { AnimatablePair(Double(rows), Double(columns)) }
+        set {
+            self.rows = Int(newValue.first)
+            self.columns = Int(newValue.second)
+        }
     }
 
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: 0, y: rect.maxY))
-        path.addLine(to: CGPoint(x: insetAmount, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX - insetAmount, y: rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-        path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        let rowSize = rect.height / CGFloat(rows)
+        let columnSize = rect.width / CGFloat(columns)
+        for row in 0 ..< rows {
+            for column in 0 ..< columns where (row + column).isMultiple(of: 2) {
+                path.addRect(
+                    CGRect(
+                        x: columnSize * CGFloat(column),
+                        y: rowSize * CGFloat(row),
+                        width: columnSize,
+                        height: rowSize
+                    )
+                )
+            }
+        }
         return path
     }
 
