@@ -9,59 +9,56 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var thicknessFraction: CGFloat = 0.5
+    @State private var colorCycle = 0.0
 
     var body: some View {
-        Arrow(thicknessFraction: thicknessFraction)
-            .frame(width: 300, height: 300)
-            .onTapGesture {
-                withAnimation {
-                    thicknessFraction = CGFloat.random(in: 0.1...0.9)
-                }
-            }
-    }
-
-}
-
-struct Arrow: Shape {
-
-    var arrowFraction: CGFloat
-    var thicknessFraction: CGFloat
-
-    var animatableData: CGFloat {
-        get { thicknessFraction }
-        set { thicknessFraction = newValue }
-    }
-
-    init(arrowFraction: CGFloat = 0.5, thicknessFraction: CGFloat = 0.5) {
-        self.arrowFraction = max(0, min(arrowFraction, 1))
-        self.thicknessFraction = 1 - max(0, min(thicknessFraction, 1))
-    }
-
-    func path(in rect: CGRect) -> Path {
-        let arrowTip = CGPoint(x: rect.midX, y: rect.minY)
-        let arrowBaseY = rect.height * arrowFraction
-        let lineIndent = (rect.maxX - rect.minX) / 2 * thicknessFraction
-        let lineLeadingX = rect.minX + lineIndent
-        let lineTrailingX = rect.maxX - lineIndent
-        return Path { path in
-            path.move(to: arrowTip)
-            [
-                CGPoint(x: rect.minX, y: arrowBaseY),
-                CGPoint(x: lineLeadingX, y: arrowBaseY),
-                CGPoint(x: lineLeadingX, y: rect.maxY),
-                CGPoint(x: lineTrailingX, y: rect.maxY),
-                CGPoint(x: lineTrailingX, y: arrowBaseY),
-                CGPoint(x: rect.maxX, y: arrowBaseY),
-                arrowTip,
-            ]
-            .forEach { point in
-                path.addLine(to: point)
-            }
+        VStack {
+            ColorCyclingRectangle(amount: colorCycle)
+            Slider(value: $colorCycle)
+                .padding()
         }
     }
 
 }
+
+struct ColorCyclingRectangle: View {
+
+    var amount = 0.0
+    var steps = 100
+
+    var body: some View {
+        ZStack {
+            ForEach(0..<steps) { value in
+                Rectangle()
+                    .inset(by: CGFloat(value))
+                    .strokeBorder(
+                        LinearGradient(
+                            gradient: Gradient(
+                                colors: [
+                                    self.color(for: value, brightness: 1),
+                                    self.color(for: value, brightness: 0.5)
+                                ]
+                            ),
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 2
+                    )
+            }
+        }
+        .drawingGroup()
+    }
+
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(steps) + amount
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
+    }
+
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
