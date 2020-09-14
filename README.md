@@ -62,13 +62,13 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 ### Days 47-48: Consolidation IV
 
 * [Day 47][day-047] – Milestone: Projects 7-9:    [Complete][day-047-tag]
-* [Day 48][day-048] – Expanding your horizons
+* [Day 48][day-048] – Expanding your horizons:     Complete
 
 
 
 ### Days 49-59: Focus on data
 
-* [Day 49][day-049] – Project 10, part one
+* [Day 49][day-049] – Project 10, part one:       [Complete][day-049-tag]
 * [Day 50][day-050] – Project 10, part two
 * [Day 51][day-051] – Project 10, part three
 * [Day 52][day-052] – Project 10, part four
