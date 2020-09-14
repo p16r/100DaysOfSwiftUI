@@ -9,70 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var results = [Result]()
+    @State private var username = ""
+    @State private var email = ""
+
+    var disableForm: Bool { username.count < 5 || email.count < 5 }
 
     var body: some View {
-        List(results, id: \.trackId) { item in
-            VStack(alignment: .leading) {
-                Text(item.trackName)
-                    .font(.headline)
-                Text(item.collectionName)
+        Form {
+            Section {
+                TextField("Username", text: $username)
+                TextField("Email", text: $email)
             }
-        }
-        .onAppear(perform: loadData)
-    }
-
-    func loadData() {
-        guard let url = self.url else {
-            return print("Invalid URL")
-        }
-        let request = URLRequest(url: url)
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                return print("Fetch failed: \(error.localizedDescription)")
+            Section {
+                Button("Create account") {
+                    print("Creating account…")
+                }
             }
-
-            data
-                .flatMap { data -> Response? in
-                    let asdf = try? JSONDecoder().decode(Response.self, from: data)
-                    return asdf
-                }
-                .map { response in
-                    DispatchQueue.main.async {
-                        self.results = response.results
-                    }
-                }
+            .disabled(disableForm)
         }
-        .resume()
-
     }
-
-    private var url: URL? {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = "itunes.apple.com"
-        components.path = "/search"
-        components.queryItems = [
-            URLQueryItem(name: "term", value: "taylor+swift"),
-            URLQueryItem(name: "entity", value: "song")
-        ]
-        return components.url
-    }
-
-}
-
-struct Response: Codable {
-
-    let results: [Result]
-
-}
-
-struct Result: Codable {
-
-    let trackId: Int
-    let trackName: String
-    let collectionName: String
 
 }
 
