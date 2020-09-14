@@ -7,33 +7,73 @@
 
 import SwiftUI
 
-class User: ObservableObject, Codable {
+struct ContentView: View {
 
-    enum CodingKeys: CodingKey {
+    @State var results = [Result]()
 
-        case name
+    var body: some View {
+        List(results, id: \.trackId) { item in
+            VStack(alignment: .leading) {
+                Text(item.trackName)
+                    .font(.headline)
+                Text(item.collectionName)
+            }
+        }
+        .onAppear(perform: loadData)
+    }
+
+    func loadData() {
+        guard let url = self.url else {
+            return print("Invalid URL")
+        }
+        let request = URLRequest(url: url)
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                return print("Fetch failed: \(error.localizedDescription)")
+            }
+
+            data
+                .flatMap { data -> Response? in
+                    let asdf = try? JSONDecoder().decode(Response.self, from: data)
+                    return asdf
+                }
+                .map { response in
+                    DispatchQueue.main.async {
+                        self.results = response.results
+                    }
+                }
+        }
+        .resume()
 
     }
 
-    @Published var name: String
-
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: .name)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
+    private var url: URL? {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "itunes.apple.com"
+        components.path = "/search"
+        components.queryItems = [
+            URLQueryItem(name: "term", value: "taylor+swift"),
+            URLQueryItem(name: "entity", value: "song")
+        ]
+        return components.url
     }
 
 }
 
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
+struct Response: Codable {
+
+    let results: [Result]
+
+}
+
+struct Result: Codable {
+
+    let trackId: Int
+    let trackName: String
+    let collectionName: String
+
 }
 
 struct ContentView_Previews: PreviewProvider {
