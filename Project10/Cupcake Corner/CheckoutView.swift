@@ -12,7 +12,23 @@ struct CheckoutView: View {
     @ObservedObject var order: Order
 
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { proxy in
+            ScrollView {
+                VStack {
+                    Image("cupcakes")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: proxy.size.width)
+                    Text("Your total is: $\(order.cost, specifier: "%.2f")")
+                        .font(.title)
+                    Button("Place Order") {
+
+                    }
+                    .padding()
+                }
+            }
+        }
+        .navigationBarTitle("Checkout", displayMode: .inline)
     }
 
 }
