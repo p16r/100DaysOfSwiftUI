@@ -14,17 +14,17 @@ struct AddressView: View {
     var body: some View {
         Form {
             Section {
-                TextField("Name", text: $order.name)
-                TextField("Street Address", text: $order.streetAddress)
-                TextField("City", text: $order.city)
-                TextField("Zip", text: $order.zip)
+                TextField("Name", text: $order.cupcakeOrder.name)
+                TextField("Street Address", text: $order.cupcakeOrder.streetAddress)
+                TextField("City", text: $order.cupcakeOrder.city)
+                TextField("Zip", text: $order.cupcakeOrder.zip)
             }
             Section {
                 NavigationLink(destination: CheckoutView(order: order)) {
                     Text("Check out")
                 }
             }
-            .disabled(order.hasValidAddress == false)
+            .disabled(order.cupcakeOrder.hasValidAddress == false)
         }
         .navigationBarTitle("Delivery details", displayMode: .inline)
     }
