@@ -10,7 +10,8 @@ import SwiftUI
 struct CheckoutView: View {
 
     @ObservedObject var order: Order
-    @State private var confirmationMessage = ""
+    @State private var alertMessage = ""
+    @State private var alertTitle = ""
     @State private var showingConfirmation = false
 
     var body: some View {
@@ -31,8 +32,8 @@ struct CheckoutView: View {
         .navigationBarTitle("Checkout", displayMode: .inline)
         .alert(isPresented: $showingConfirmation) {
             Alert(
-                title: Text("Thank You!"),
-                message: Text(confirmationMessage),
+                title: Text(alertTitle),
+                message: Text(alertMessage),
                 dismissButton: .default(Text("OK"))
             )
         }
@@ -49,19 +50,28 @@ struct CheckoutView: View {
         request.httpBody = body
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                return print("Error: \(error.localizedDescription)")
+                alertTitle = "Error"
+                alertMessage = error.localizedDescription
+                showingConfirmation = true
+                return
             }
             guard let data = data else {
-                return print("No data in response")
+                alertTitle = "Error"
+                alertMessage = "No data in response"
+                showingConfirmation = true
+                return
             }
             if let order = try? JSONDecoder().decode(Order.self, from: data) {
-                self.confirmationMessage = """
+                alertTitle = "Thank You!"
+                alertMessage = """
                 Your order for \(order.quantity)x \
                 \(Order.types[order.type].lowercased()) cupcakes is on its way!
                 """
-                self.showingConfirmation = true
+                showingConfirmation = true
             } else {
-                print("Invalid response from server")
+                alertTitle = "Error"
+                alertMessage = "Invalid response from server"
+                showingConfirmation = true
             }
         }
         .resume()
