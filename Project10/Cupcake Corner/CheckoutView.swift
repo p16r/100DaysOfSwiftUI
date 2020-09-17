@@ -22,7 +22,7 @@ struct CheckoutView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: proxy.size.width)
-                    Text("Your total is: $\(order.cost, specifier: "%.2f")")
+                    Text("Your total is: $\(order.cupcakeOrder.cost, specifier: "%.2f")")
                         .font(.title)
                     Button("Place Order", action: placeOrder)
                         .padding()
@@ -64,8 +64,8 @@ struct CheckoutView: View {
             if let order = try? JSONDecoder().decode(Order.self, from: data) {
                 alertTitle = "Thank You!"
                 alertMessage = """
-                Your order for \(order.quantity)x \
-                \(Order.types[order.type].lowercased()) cupcakes is on its way!
+                Your order for \(order.cupcakeOrder.quantity)x \
+                \(CupcakeOrder.types[order.cupcakeOrder.type].lowercased()) cupcakes is on its way!
                 """
                 showingConfirmation = true
             } else {
