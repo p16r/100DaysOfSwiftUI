@@ -18,19 +18,31 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            Text("Count: \(books.count)")
-                .navigationBarTitle("Bookworm")
-                .navigationBarItems(
-                    trailing: Button {
-                        showingAddScreen = true
-                    } label: {
-                        Image(systemName: "plus")
+            List {
+                ForEach(books, id: \.self) { book in
+                    NavigationLink(destination: Text(book.title ?? "Unknown")) {
+                        EmojiRatingView(rating: book.rating)
+                            .font(.largeTitle)
+                        VStack(alignment: .leading) {
+                            Text(book.title ?? "Unknown title")
+                                .font(.headline)
+                            Text(book.author ?? "Unknown author")
+                        }
                     }
-                )
-                .sheet(isPresented: $showingAddScreen) {
-                    AddBookView()
-                        .environment(\.managedObjectContext, context)
                 }
+            }
+            .navigationBarTitle("Bookworm")
+            .navigationBarItems(
+                trailing: Button {
+                    showingAddScreen = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            )
+            .sheet(isPresented: $showingAddScreen) {
+                AddBookView()
+                    .environment(\.managedObjectContext, context)
+            }
         }
     }
 
