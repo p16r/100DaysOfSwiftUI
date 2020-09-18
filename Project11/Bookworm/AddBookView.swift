@@ -18,7 +18,7 @@ struct AddBookView: View {
     @State private var author = ""
     @State private var genre = ""
     @State private var review = ""
-    @State private var rating: Int16 = 3
+    @State private var rating = 3
 
     let genres = [
         "Fantasy",
@@ -43,11 +43,7 @@ struct AddBookView: View {
                     }
                 }
                 Section {
-                    Picker("Rating", selection: $rating) {
-                        ForEach(0..<6) {
-                            Text("\($0)")
-                        }
-                    }
+                    RatingView(rating: $rating)
                     TextField("Write a review", text: $review)
                 }
                 Section {
@@ -55,7 +51,7 @@ struct AddBookView: View {
                         let newBook = Book(context: context)
                         newBook.title = title
                         newBook.author = author
-                        newBook.rating = rating
+                        newBook.rating = Int16(rating)
                         newBook.genre = genre
                         newBook.review = review
                         try? context.save()

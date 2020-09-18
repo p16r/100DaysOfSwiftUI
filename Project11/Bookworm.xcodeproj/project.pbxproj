@@ -15,6 +15,7 @@
 		05542EB925149766000709B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05542EB825149766000709B7 /* Preview Assets.xcassets */; };
 		05542EBC25149766000709B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05542EBA25149766000709B7 /* LaunchScreen.storyboard */; };
 		05CD2D632514DBB1006F5369 /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD2D622514DBB1006F5369 /* AddBookView.swift */; };
+		05CD2D652514F90F006F5369 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CD2D642514F90F006F5369 /* RatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		05542EBB25149766000709B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05542EBD25149766000709B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05CD2D622514DBB1006F5369 /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
+		05CD2D642514F90F006F5369 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				05542EAE25149764000709B7 /* SceneDelegate.swift */,
 				05542EB325149764000709B7 /* ContentView.swift */,
 				05CD2D622514DBB1006F5369 /* AddBookView.swift */,
+				05CD2D642514F90F006F5369 /* RatingView.swift */,
 				05542EB525149766000709B7 /* Assets.xcassets */,
 				05542EBA25149766000709B7 /* LaunchScreen.storyboard */,
 				05542EBD25149766000709B7 /* Info.plist */,
@@ -155,6 +158,7 @@
 				05542EAD25149764000709B7 /* AppDelegate.swift in Sources */,
 				05542EB225149764000709B7 /* Bookworm.xcdatamodeld in Sources */,
 				05542EB425149764000709B7 /* ContentView.swift in Sources */,
+				05CD2D652514F90F006F5369 /* RatingView.swift in Sources */,
 				05542EAF25149764000709B7 /* SceneDelegate.swift in Sources */,
 				05CD2D632514DBB1006F5369 /* AddBookView.swift in Sources */,
 			);
