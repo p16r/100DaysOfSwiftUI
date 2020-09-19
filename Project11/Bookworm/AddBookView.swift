@@ -13,6 +13,7 @@ struct AddBookView: View {
 
     @Environment(\.managedObjectContext) var context
     @Environment(\.presentationMode) var presentationMode
+    @State var isShowingAlert = false
 
     @State private var title = ""
     @State private var author = ""
@@ -48,6 +49,10 @@ struct AddBookView: View {
                 }
                 Section {
                     Button("Save") {
+                        guard genres.firstIndex(of: genre) != nil else {
+                            return isShowingAlert = true
+                        }
+
                         let newBook = Book(context: context)
                         newBook.title = title
                         newBook.author = author
@@ -61,6 +66,12 @@ struct AddBookView: View {
                 }
             }
             .navigationBarTitle("Add a book")
+            .alert(isPresented: $isShowingAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("Select a genre."),
+                    dismissButton: .default(Text("OK")))
+            }
         }
     }
 
