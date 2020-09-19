@@ -13,6 +13,10 @@ struct BookDetailView: View {
 
     let book: Book
 
+    @Environment(\.managedObjectContext) var context
+    @Environment(\.presentationMode) var presentationMode
+    @State var isShowingDeleteAlert = false
+
     var body: some View {
         GeometryReader { proxy in
             VStack {
@@ -38,10 +42,33 @@ struct BookDetailView: View {
                 Spacer()
             }
         }
+        .alert(isPresented: $isShowingDeleteAlert) {
+            Alert(
+                title: Text("Delete Book"),
+                message: Text("Are you sure?"),
+                primaryButton: .cancel(),
+                secondaryButton: .destructive(
+                    Text("Delete"),
+                    action: deleteBook
+                )
+            )
+        }
         .navigationBarTitle(
             Text(book.title ?? "Unknown book"),
             displayMode: .inline
         )
+        .navigationBarItems(
+            trailing: Button(
+                action: { isShowingDeleteAlert = true },
+                label: { Image(systemName: "trash").foregroundColor(.red) }
+            )
+        )
+    }
+
+    func deleteBook() {
+        context.delete(book)
+        try? context.save()
+        presentationMode.wrappedValue.dismiss()
     }
 
 }
