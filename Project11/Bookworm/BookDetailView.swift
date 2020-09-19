@@ -12,6 +12,12 @@ import CoreData
 struct BookDetailView: View {
 
     let book: Book
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .long
+        return formatter
+    } ()
 
     @Environment(\.managedObjectContext) var context
     @Environment(\.presentationMode) var presentationMode
@@ -36,6 +42,8 @@ struct BookDetailView: View {
                     .font(.title)
                     .foregroundColor(.secondary)
                 Text(book.review ?? "No Review")
+                    .padding()
+                Text("\(book.date ?? Date(), formatter: formatter)")
                     .padding()
                 RatingView(rating: .constant(Int(book.rating)))
                     .font(.largeTitle)
