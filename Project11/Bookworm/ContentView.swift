@@ -11,8 +11,13 @@ import SwiftUI
 struct ContentView: View {
 
     @Environment(\.managedObjectContext) var context
-    @FetchRequest(entity: Book.entity(), sortDescriptors: [])
-    var books: FetchedResults<Book>
+    @FetchRequest(
+        entity: Book.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Book.title, ascending: true),
+            NSSortDescriptor(keyPath: \Book.author, ascending: true),
+        ]
+    ) var books: FetchedResults<Book>
 
     @State private var showingAddScreen = false
 
@@ -20,7 +25,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(books, id: \.self) { book in
-                    NavigationLink(destination: Text(book.title ?? "Unknown")) {
+                    NavigationLink(destination: BookDetailView(book: book)) {
                         EmojiRatingView(rating: book.rating)
                             .font(.largeTitle)
                         VStack(alignment: .leading) {
@@ -30,9 +35,11 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onDelete(perform: deleteBooks)
             }
             .navigationBarTitle("Bookworm")
             .navigationBarItems(
+                leading: EditButton(),
                 trailing: Button {
                     showingAddScreen = true
                 } label: {
@@ -44,6 +51,11 @@ struct ContentView: View {
                     .environment(\.managedObjectContext, context)
             }
         }
+    }
+
+    func deleteBooks(at offsets: IndexSet) {
+        offsets.forEach { context.delete(books[$0]) }
+        try? context.save()
     }
 
 }
