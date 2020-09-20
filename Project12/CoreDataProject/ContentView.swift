@@ -10,26 +10,34 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var context
-    @FetchRequest(entity: Wizard.entity(), sortDescriptors: [])
-    var wizards: FetchedResults<Wizard>
+    @FetchRequest(
+        entity: Ship.entity(),
+        sortDescriptors: [],
+        predicate: NSPredicate(format: "universe == %@", "Star Wars")
+    ) var ships: FetchedResults<Ship>
     
     var body: some View {
-        List(wizards, id: \.self) { wizard in
-            Text(wizard.name ?? "Unknown")
+        List(ships, id: \.self) { ship in
+            Text(ship.name ?? "Unknown")
         }
-        Button("Add") {
-            let wizard = Wizard(context: context)
-            wizard.name = "Harry Potter"
-        }
-        Button("Save") {
+        Button("Add Examples") {
+            let ship1 = Ship(context: context)
+            ship1.name = "Enterprise"
+            ship1.universe = "Star Trek"
             
-            guard context.hasChanges else { return }
+            let ship2 = Ship(context: context)
+            ship2.name = "Defiant"
+            ship2.universe = "Star Trek"
             
-            do {
-                try context.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            let ship3 = Ship(context: context)
+            ship3.name = "Millennium Falcon"
+            ship3.universe = "Star Wars"
+            
+            let ship4 = Ship(context: context)
+            ship4.name = "Executor"
+            ship4.universe = "Star Ward"
+            
+            try? context.save()
         }
     }
     
