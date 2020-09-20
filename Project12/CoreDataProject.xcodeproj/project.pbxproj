@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		058574FF2517AF660007C0A9 /* Singer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058574FD2517AF660007C0A9 /* Singer+CoreDataClass.swift */; };
-		058575002517AF660007C0A9 /* Singer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058574FE2517AF660007C0A9 /* Singer+CoreDataProperties.swift */; };
-		058575042517AFCB0007C0A9 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058575032517AFCB0007C0A9 /* FilteredList.swift */; };
+		058575122517D4240007C0A9 /* Country+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0585750E2517D4240007C0A9 /* Country+CoreDataClass.swift */; };
+		058575132517D4240007C0A9 /* Country+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0585750F2517D4240007C0A9 /* Country+CoreDataProperties.swift */; };
+		058575142517D4240007C0A9 /* Candy+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058575102517D4240007C0A9 /* Candy+CoreDataClass.swift */; };
+		058575152517D4240007C0A9 /* Candy+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058575112517D4240007C0A9 /* Candy+CoreDataProperties.swift */; };
 		05BBFDD425178094006CB8E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBFDD325178094006CB8E4 /* AppDelegate.swift */; };
 		05BBFDD625178094006CB8E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBFDD525178094006CB8E4 /* SceneDelegate.swift */; };
 		05BBFDD825178094006CB8E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBFDD725178094006CB8E4 /* ContentView.swift */; };
@@ -20,9 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		058574FD2517AF660007C0A9 /* Singer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataClass.swift"; sourceTree = "<group>"; };
-		058574FE2517AF660007C0A9 /* Singer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		058575032517AFCB0007C0A9 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		0585750E2517D4240007C0A9 /* Country+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0585750F2517D4240007C0A9 /* Country+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		058575102517D4240007C0A9 /* Candy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataClass.swift"; sourceTree = "<group>"; };
+		058575112517D4240007C0A9 /* Candy+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		05BBFDD025178094006CB8E4 /* CoreDataProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BBFDD325178094006CB8E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05BBFDD525178094006CB8E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,12 +66,13 @@
 		05BBFDD225178094006CB8E4 /* CoreDataProject */ = {
 			isa = PBXGroup;
 			children = (
-				058574FD2517AF660007C0A9 /* Singer+CoreDataClass.swift */,
-				058574FE2517AF660007C0A9 /* Singer+CoreDataProperties.swift */,
+				0585750E2517D4240007C0A9 /* Country+CoreDataClass.swift */,
+				0585750F2517D4240007C0A9 /* Country+CoreDataProperties.swift */,
+				058575102517D4240007C0A9 /* Candy+CoreDataClass.swift */,
+				058575112517D4240007C0A9 /* Candy+CoreDataProperties.swift */,
 				05BBFDD325178094006CB8E4 /* AppDelegate.swift */,
 				05BBFDD525178094006CB8E4 /* SceneDelegate.swift */,
 				05BBFDD725178094006CB8E4 /* ContentView.swift */,
-				058575032517AFCB0007C0A9 /* FilteredList.swift */,
 				05BBFDDC25178095006CB8E4 /* Assets.xcassets */,
 				05BBFDE125178095006CB8E4 /* LaunchScreen.storyboard */,
 				05BBFDE425178095006CB8E4 /* Info.plist */,
@@ -157,13 +160,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				058574FF2517AF660007C0A9 /* Singer+CoreDataClass.swift in Sources */,
 				05BBFDD425178094006CB8E4 /* AppDelegate.swift in Sources */,
 				05BBFDD625178094006CB8E4 /* SceneDelegate.swift in Sources */,
+				058575132517D4240007C0A9 /* Country+CoreDataProperties.swift in Sources */,
+				058575152517D4240007C0A9 /* Candy+CoreDataProperties.swift in Sources */,
 				05BBFDDB25178094006CB8E4 /* CoreDataProject.xcdatamodeld in Sources */,
-				058575002517AF660007C0A9 /* Singer+CoreDataProperties.swift in Sources */,
+				058575122517D4240007C0A9 /* Country+CoreDataClass.swift in Sources */,
 				05BBFDD825178094006CB8E4 /* ContentView.swift in Sources */,
-				058575042517AFCB0007C0A9 /* FilteredList.swift in Sources */,
+				058575142517D4240007C0A9 /* Candy+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
