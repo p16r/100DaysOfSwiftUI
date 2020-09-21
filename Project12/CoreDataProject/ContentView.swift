@@ -13,7 +13,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var context
     @FetchRequest(entity: Country.entity(), sortDescriptors: [])
     var countries: FetchedResults<Country>
-    @State var filter: (key: String, value: String)? = nil
+    @State var filter: (key: String, value: String, condition: String)? = nil
     @State var ascending: Bool? = nil
 
     var sortDescriptors: [NSSortDescriptor] {
@@ -33,11 +33,11 @@ struct ContentView: View {
         HStack {
             VStack {
                 Button("Show UK") {
-                    filter = ("shortName", "UK")
+                    filter = ("shortName", "UK", "BEGINSWITH")
                     ascending = nil
                 }
                 Button("Show Switzerland") {
-                    filter = ("shortName", "CH")
+                    filter = ("shortName", "CH", "BEGINSWITH")
                     ascending = nil
                 }
             }
