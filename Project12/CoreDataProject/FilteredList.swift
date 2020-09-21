@@ -14,12 +14,16 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     var content: (T) -> Content
     
     init(
-        filter: (key: String, value: String, condition: String)? = nil,
+        filter: (key: String, condition: Condition, value: String)? = nil,
         sortKeys: [NSSortDescriptor] = [],
         @ViewBuilder content: @escaping (T) -> Content
     ) {
         let predicate = filter.map {
-            NSPredicate(format: "%K \($0.condition) %@", $0.key, $0.value)
+            NSPredicate(
+                format: "%K \($0.condition.rawValue) %@",
+                $0.key,
+                $0.value
+            )
         }
         let sortDescriptors = sortKeys.map {
             NSSortDescriptor(key: $0.key, ascending: $0.ascending)
