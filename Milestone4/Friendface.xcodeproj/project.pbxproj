@@ -11,6 +11,9 @@
 		052861172521EE82003B95E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052861162521EE82003B95E3 /* ContentView.swift */; };
 		052861192521EE82003B95E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052861182521EE82003B95E3 /* Assets.xcassets */; };
 		0528611C2521EE82003B95E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0528611B2521EE82003B95E3 /* Preview Assets.xcassets */; };
+		0544120425220CEF00B0D76B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544120325220CEF00B0D76B /* UserView.swift */; };
+		0544120925224E2400B0D76B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544120825224E2400B0D76B /* Models.swift */; };
+		0544120D252250ED00B0D76B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544120C252250ED00B0D76B /* ResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		052861182521EE82003B95E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0528611B2521EE82003B95E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0528611D2521EE82003B95E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0544120325220CEF00B0D76B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		0544120825224E2400B0D76B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		0544120C252250ED00B0D76B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 			children = (
 				052861142521EE82003B95E3 /* FriendfaceApp.swift */,
 				052861162521EE82003B95E3 /* ContentView.swift */,
+				0544120C252250ED00B0D76B /* ResultView.swift */,
+				0544120325220CEF00B0D76B /* UserView.swift */,
+				0544120825224E2400B0D76B /* Models.swift */,
 				052861182521EE82003B95E3 /* Assets.xcassets */,
 				0528611D2521EE82003B95E3 /* Info.plist */,
 				0528611A2521EE82003B95E3 /* Preview Content */,
@@ -140,6 +149,9 @@
 			files = (
 				052861172521EE82003B95E3 /* ContentView.swift in Sources */,
 				052861152521EE82003B95E3 /* FriendfaceApp.swift in Sources */,
+				0544120D252250ED00B0D76B /* ResultView.swift in Sources */,
+				0544120425220CEF00B0D76B /* UserView.swift in Sources */,
+				0544120925224E2400B0D76B /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
