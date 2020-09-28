@@ -84,7 +84,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 
 ### Days 60-61: Consolidation V
 
-* [Day 60][day-060] – Milestone: Projects 10-12
+* [Day 60][day-060] – Milestone: Projects 10-12:  [Complete][day-060-tag]
 * [Day 61][day-061] – Time for Core Data
 
 
