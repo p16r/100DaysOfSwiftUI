@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct FriendfaceApp: App {
+
+    private let container = FriendfaceContainer()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, container.viewContext)
         }
     }
 }

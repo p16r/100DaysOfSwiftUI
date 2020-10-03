@@ -11,9 +11,22 @@
 		052861172521EE82003B95E3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052861162521EE82003B95E3 /* ContentView.swift */; };
 		052861192521EE82003B95E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 052861182521EE82003B95E3 /* Assets.xcassets */; };
 		0528611C2521EE82003B95E3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0528611B2521EE82003B95E3 /* Preview Assets.xcassets */; };
-		0544120425220CEF00B0D76B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544120325220CEF00B0D76B /* UserView.swift */; };
-		0544120925224E2400B0D76B /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544120825224E2400B0D76B /* Models.swift */; };
 		0544120D252250ED00B0D76B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0544120C252250ED00B0D76B /* ResultView.swift */; };
+		0559AF3D252890EB00305004 /* FriendfaceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559AF3C252890EB00305004 /* FriendfaceContainer.swift */; };
+		0559AF41252895FD00305004 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559AF40252895FD00305004 /* UserView.swift */; };
+		0559AF442528AA3800305004 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0559AF432528AA3800305004 /* TagView.swift */; };
+		05765E35252310830071E9A3 /* Friendface.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05765E33252310830071E9A3 /* Friendface.xcdatamodeld */; };
+		05765E3C252322E10071E9A3 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05765E38252322E10071E9A3 /* Tag+CoreDataClass.swift */; };
+		05765E3D252322E10071E9A3 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05765E39252322E10071E9A3 /* Tag+CoreDataProperties.swift */; };
+		05765E3E252322E10071E9A3 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05765E3A252322E10071E9A3 /* User+CoreDataClass.swift */; };
+		05765E3F252322E10071E9A3 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05765E3B252322E10071E9A3 /* User+CoreDataProperties.swift */; };
+		05765E4325234F450071E9A3 /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05765E4125234F450071E9A3 /* Friend+CoreDataClass.swift */; };
+		05765E4425234F450071E9A3 /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05765E4225234F450071E9A3 /* Friend+CoreDataProperties.swift */; };
+		05E260072528FDB700A34D4B /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E260062528FDB700A34D4B /* View+.swift */; };
+		05E2600C2528FDE100A34D4B /* Binding+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2600B2528FDE100A34D4B /* Binding+.swift */; };
+		05E260102528FE1400A34D4B /* CodingKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E2600F2528FE1400A34D4B /* CodingKeys.swift */; };
+		05E260132528FE2400A34D4B /* DecoderConfigurationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E260122528FE2400A34D4B /* DecoderConfigurationError.swift */; };
+		05E260162528FE3E00A34D4B /* CodingUserInfoKey+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E260152528FE3E00A34D4B /* CodingUserInfoKey+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +36,22 @@
 		052861182521EE82003B95E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0528611B2521EE82003B95E3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0528611D2521EE82003B95E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0544120325220CEF00B0D76B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		0544120825224E2400B0D76B /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		0544120C252250ED00B0D76B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		0559AF3C252890EB00305004 /* FriendfaceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendfaceContainer.swift; sourceTree = "<group>"; };
+		0559AF40252895FD00305004 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		0559AF432528AA3800305004 /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		05765E34252310830071E9A3 /* Friendface.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Friendface.xcdatamodel; sourceTree = "<group>"; };
+		05765E38252322E10071E9A3 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05765E39252322E10071E9A3 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05765E3A252322E10071E9A3 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05765E3B252322E10071E9A3 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05765E4125234F450071E9A3 /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = "<group>"; };
+		05765E4225234F450071E9A3 /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		05E260062528FDB700A34D4B /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		05E2600B2528FDE100A34D4B /* Binding+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+.swift"; sourceTree = "<group>"; };
+		05E2600F2528FE1400A34D4B /* CodingKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingKeys.swift; sourceTree = "<group>"; };
+		05E260122528FE2400A34D4B /* DecoderConfigurationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderConfigurationError.swift; sourceTree = "<group>"; };
+		05E260152528FE3E00A34D4B /* CodingUserInfoKey+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +87,11 @@
 				052861142521EE82003B95E3 /* FriendfaceApp.swift */,
 				052861162521EE82003B95E3 /* ContentView.swift */,
 				0544120C252250ED00B0D76B /* ResultView.swift */,
-				0544120325220CEF00B0D76B /* UserView.swift */,
-				0544120825224E2400B0D76B /* Models.swift */,
+				0559AF40252895FD00305004 /* UserView.swift */,
+				0559AF432528AA3800305004 /* TagView.swift */,
+				05765E67252356710071E9A3 /* CoreData */,
+				05E260092528FDC800A34D4B /* Extensions */,
+				05E260182528FE5B00A34D4B /* Utils */,
 				052861182521EE82003B95E3 /* Assets.xcassets */,
 				0528611D2521EE82003B95E3 /* Info.plist */,
 				0528611A2521EE82003B95E3 /* Preview Content */,
@@ -76,6 +105,40 @@
 				0528611B2521EE82003B95E3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		05765E67252356710071E9A3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				05765E33252310830071E9A3 /* Friendface.xcdatamodeld */,
+				0559AF3C252890EB00305004 /* FriendfaceContainer.swift */,
+				05765E4125234F450071E9A3 /* Friend+CoreDataClass.swift */,
+				05765E4225234F450071E9A3 /* Friend+CoreDataProperties.swift */,
+				05765E38252322E10071E9A3 /* Tag+CoreDataClass.swift */,
+				05765E39252322E10071E9A3 /* Tag+CoreDataProperties.swift */,
+				05765E3A252322E10071E9A3 /* User+CoreDataClass.swift */,
+				05765E3B252322E10071E9A3 /* User+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		05E260092528FDC800A34D4B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				05E260152528FE3E00A34D4B /* CodingUserInfoKey+.swift */,
+				05E2600B2528FDE100A34D4B /* Binding+.swift */,
+				05E260062528FDB700A34D4B /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		05E260182528FE5B00A34D4B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				05E260122528FE2400A34D4B /* DecoderConfigurationError.swift */,
+				05E2600F2528FE1400A34D4B /* CodingKeys.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,11 +210,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05765E4425234F450071E9A3 /* Friend+CoreDataProperties.swift in Sources */,
+				05765E35252310830071E9A3 /* Friendface.xcdatamodeld in Sources */,
+				05E260162528FE3E00A34D4B /* CodingUserInfoKey+.swift in Sources */,
+				0559AF442528AA3800305004 /* TagView.swift in Sources */,
+				05765E4325234F450071E9A3 /* Friend+CoreDataClass.swift in Sources */,
+				05E260072528FDB700A34D4B /* View+.swift in Sources */,
+				05E2600C2528FDE100A34D4B /* Binding+.swift in Sources */,
+				05E260132528FE2400A34D4B /* DecoderConfigurationError.swift in Sources */,
 				052861172521EE82003B95E3 /* ContentView.swift in Sources */,
+				05765E3C252322E10071E9A3 /* Tag+CoreDataClass.swift in Sources */,
+				05765E3F252322E10071E9A3 /* User+CoreDataProperties.swift in Sources */,
 				052861152521EE82003B95E3 /* FriendfaceApp.swift in Sources */,
+				05765E3E252322E10071E9A3 /* User+CoreDataClass.swift in Sources */,
+				05E260102528FE1400A34D4B /* CodingKeys.swift in Sources */,
 				0544120D252250ED00B0D76B /* ResultView.swift in Sources */,
-				0544120425220CEF00B0D76B /* UserView.swift in Sources */,
-				0544120925224E2400B0D76B /* Models.swift in Sources */,
+				0559AF3D252890EB00305004 /* FriendfaceContainer.swift in Sources */,
+				05765E3D252322E10071E9A3 /* Tag+CoreDataProperties.swift in Sources */,
+				0559AF41252895FD00305004 /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +416,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		05765E33252310830071E9A3 /* Friendface.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				05765E34252310830071E9A3 /* Friendface.xcdatamodel */,
+			);
+			currentVersion = 05765E34252310830071E9A3 /* Friendface.xcdatamodel */;
+			path = Friendface.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 052861092521EE81003B95E3 /* Project object */;
 }

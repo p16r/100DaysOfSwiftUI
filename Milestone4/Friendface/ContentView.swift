@@ -9,44 +9,54 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State var result: Result<[User], Error> = .success([])
-
-    private static let url: URL = {
-        let string = "https://www.hackingwithswift.com/samples/friendface.json"
-        return URL(string: string)!
-    } ()
-    private static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        return decoder
-    } ()
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(entity: User.entity(), sortDescriptors: [])
+    var userEntities: FetchedResults<User>
+    @State var error: Error? = nil
 
     var body: some View {
         NavigationView {
-            ResultView(result: result) { users in
-                List(users) { user in
-                    NavigationLink(destination: UserView(user: user, users: users)) {
-                        Text(user.name)
-                    }
-                }
-            } failureContent: { error in
-                VStack {
-                    Text(error.localizedDescription)
-                    Button("Retry", action: fetchData)
+            List(userEntities) { user in
+                NavigationLink(destination: UserView(user: user)) {
+                    Text(user.name)
                 }
             }
             .navigationBarTitle("Friendface")
+        }
+        .alert(boundTo: $error) { error in
+            Alert(
+                title: Text("Error"),
+                message: Text(error.localizedDescription),
+                primaryButton: .default(Text("Retry"), action: fetchData),
+                secondaryButton: .default(Text("OK"))
+            )
         }
         .onAppear(perform: fetchData)
     }
 
     func fetchData() {
-        URLSession.shared.dataTask(with: Self.url) { data, response, error in
-            if let error = error { return result = .failure(error) }
-            guard let data = data else { return result = .failure(URLError(.unknown)) }
-            result = Result { try Self.decoder.decode([User].self, from: data) }
+        guard userEntities.isEmpty else { return }
+        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error { return self.error = error }
+            guard let data = data else { return self.error = URLError(.unknown) }
+            context.perform {
+                do {
+                    _ = try jsonDecoder().decode([User].self, from: data)
+                    try context.save()
+                } catch {
+                    self.error = error
+                }
+            }
         }
         .resume()
+    }
+
+    private func jsonDecoder() -> JSONDecoder {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        decoder.userInfo[.managedObjectContext] = context
+        return decoder
     }
 
 }
