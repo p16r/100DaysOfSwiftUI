@@ -5,12 +5,14 @@
 //  Created by Prathamesh Kowarkar on 28/09/20.
 //
 
+import CoreData
 import SwiftUI
 
 struct UserView: View {
 
     let user: User
-    let users: [User]
+    @Environment(\.managedObjectContext) var context
+    @State var friends: [User] = []
 
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -32,9 +34,7 @@ struct UserView: View {
             }
             Section(header: Text("Contact")) {
                 Button(user.email) {
-                    guard let url = URL(string: "mailto:\(user.email)") else {
-                        return
-                    }
+                    guard let url = URL(string: "mailto:\(user.email)") else { return }
                     UIApplication.shared.open(url)
                 }
                 Button(user.address) {
@@ -46,33 +46,57 @@ struct UserView: View {
             }
             Section(header: Text("Tags")) {
                 DisclosureGroup("\(user.tags.count) tag(s)") {
-                    ForEach(user.tags, id: \.self) {
-                        Text($0)
+                    ForEach(Array(user.tags)) { tag in
+                        NavigationLink(destination: TagView(tag: tag)) {
+                            Text(tag.name)
+                        }
                     }
                 }
             }
-            Section(header: Text("\(user.friends.count) Friend(s)")) {
-                ForEach(user.friends) { friend in
-                    if let friendUser = users.first(where: { $0.id == friend.id }) {
-                        NavigationLink(destination: UserView(user: friendUser, users: users)) {
-                            Text(friend.name)
-                        }
-                    } else {
+            Section(header: Text("Friends")) {
+                ForEach(friends) { friend in
+                    NavigationLink(destination: UserView(user: friend)) {
                         Text(friend.name)
                     }
                 }
             }
         }
-        .listStyle(GroupedListStyle())
         .navigationBarTitle(user.name)
+        .listStyle(GroupedListStyle())
+        .onAppear {
+            let request: NSFetchRequest<User> = User.fetchRequest()
+            request.sortDescriptors = []
+            request.predicate = NSPredicate(format: "id IN %@", user.friends.map(\.id))
+            context.perform {
+                if let friends = try? request.execute() {
+                    self.friends = friends
+                }
+            }
+        }
     }
 
 }
 
 struct UserView_Previews: PreviewProvider {
+
+    let user: User = {
+        let user = User()
+        user.id = UUID()
+        user.name = "Lorem Ipsum"
+        user.isActive = .random()
+        user.age = 30
+        user.company = "Apple"
+        user.email = "lipsum@example.com"
+        user.address = "1234 Road Street, Something state"
+        user.about = "Lorem ipsum sit dolor amet"
+        user.registered = .init()
+        user.tags = Set()
+        user.friends = Set()
+        return user
+    } ()
+
     static var previews: some View {
-        NavigationView {
-            UserView(user: .example, users: [])
-        }
+        UserView(user: User())
     }
+
 }
