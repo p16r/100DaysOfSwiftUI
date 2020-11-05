@@ -91,7 +91,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 
 ### Days 62-76: Views and view controllers
 
-* [Day 62][day-062] – Project 13, part one
+* [Day 62][day-062] – Project 13, part one:       [Complete][day-062-tag]
 * [Day 63][day-063] – Project 13, part two
 * [Day 64][day-064] – Project 13, part three
 * [Day 65][day-065] – Project 13, part four
