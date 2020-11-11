@@ -14,6 +14,7 @@
 		058C40BD2553E90A00ABC102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058C40BC2553E90A00ABC102 /* Assets.xcassets */; };
 		058C40C02553E90A00ABC102 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058C40BF2553E90A00ABC102 /* Preview Assets.xcassets */; };
 		058C40C32553E90A00ABC102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058C40C12553E90A00ABC102 /* LaunchScreen.storyboard */; };
+		05E41ACE255C69730007AD7C /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E41ACD255C69730007AD7C /* ImageSaver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		058C40BF2553E90A00ABC102 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		058C40C22553E90A00ABC102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058C40C42553E90A00ABC102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05E41ACD255C69730007AD7C /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				058C40B82553E90900ABC102 /* SceneDelegate.swift */,
 				058C40BA2553E90900ABC102 /* ContentView.swift */,
 				05887E69255C3D9F00425176 /* ImagePicker.swift */,
+				05E41ACD255C69730007AD7C /* ImageSaver.swift */,
 				058C40BC2553E90A00ABC102 /* Assets.xcassets */,
 				058C40C12553E90A00ABC102 /* LaunchScreen.storyboard */,
 				058C40C42553E90A00ABC102 /* Info.plist */,
@@ -150,6 +153,7 @@
 			files = (
 				058C40B72553E90900ABC102 /* AppDelegate.swift in Sources */,
 				05887E6A255C3D9F00425176 /* ImagePicker.swift in Sources */,
+				05E41ACE255C69730007AD7C /* ImageSaver.swift in Sources */,
 				058C40B92553E90900ABC102 /* SceneDelegate.swift in Sources */,
 				058C40BB2553E90900ABC102 /* ContentView.swift in Sources */,
 			);
