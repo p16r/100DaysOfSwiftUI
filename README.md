@@ -93,7 +93,7 @@ I have skipped the first 15 days and gotten straight to the SwiftUI projects.
 
 * [Day 62][day-062] – Project 13, part one:       [Complete][day-062-tag]
 * [Day 63][day-063] – Project 13, part two:       [Complete][day-063-tag]
-* [Day 64][day-064] – Project 13, part three
+* [Day 64][day-064] – Project 13, part three:     [Complete][day-064-tag]
 * [Day 65][day-065] – Project 13, part four
 * [Day 66][day-066] – Project 13, part five
 * [Day 67][day-067] – Project 13, part six
