@@ -12,32 +12,20 @@ import SwiftUI
 struct ContentView: View {
 
     @State private var image: Image?
+    @State private var showingImagePicker = false
 
     var body: some View {
         VStack {
             image?
                 .resizable()
                 .scaledToFit()
+            Button("Select Image") {
+                showingImagePicker = true
+            }
         }
-        .onAppear(perform: loadImage)
-    }
-
-    func loadImage() {
-
-        func filter(with image: UIImage) -> CIFilter {
-            let filter = CIFilter.twirlDistortion()
-            filter.inputImage = CIImage(image: image)
-            filter.radius = 400
-            filter.center = CGPoint(x: image.size.width / 2, y: image.size.height / 2)
-            return filter
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker()
         }
-
-        image = UIImage(named: "Example")
-            .map { filter(with: $0) }
-            .flatMap { $0.outputImage }
-            .flatMap { CIContext().createCGImage($0, from: $0.extent) }
-            .map { UIImage(cgImage: $0) }
-            .map { Image(uiImage: $0) }
     }
 
 }
