@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var inputImage: UIImage?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var isShowingFilterSheet = false
+    @State private var processedImage: UIImage?
     private let context = CIContext()
 
     var body: some View {
@@ -54,7 +55,17 @@ struct ContentView: View {
                     }
                     Spacer()
                     Button("Save") {
-                        //  save the picture
+                        guard let processedImage = processedImage else { return }
+
+                        let imageSaver = ImageSaver()
+                        imageSaver.successHandler = {
+                            print("Success!")
+                        }
+                        imageSaver.errorHandler = {
+                            print("Error: \($0.localizedDescription)")
+                        }
+
+                        imageSaver.writeToPhotoAlbum(image: processedImage)
                     }
                 }
             }
@@ -122,6 +133,7 @@ struct ContentView: View {
         if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImage = UIImage(cgImage: cgImage)
             image = Image(uiImage: uiImage)
+            processedImage = uiImage
         }
     }
 
