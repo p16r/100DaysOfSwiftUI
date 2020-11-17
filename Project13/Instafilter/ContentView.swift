@@ -13,6 +13,8 @@ struct ContentView: View {
 
     @State private var image: Image?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 0.5
+    @State private var filterScale = 0.5
     @State private var isShowingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
@@ -39,6 +41,20 @@ struct ContentView: View {
                 applyProcessing()
             }
         )
+        let radius = Binding<Double>(
+            get: { filterRadius },
+            set: {
+                filterRadius = $0
+                applyProcessing()
+            }
+        )
+        let scale = Binding<Double>(
+            get: { filterScale },
+            set: {
+                filterScale = $0
+                applyProcessing()
+            }
+        )
         NavigationView {
             VStack {
                 ZStack {
@@ -55,9 +71,19 @@ struct ContentView: View {
                 .onTapGesture {
                     isShowingImagePicker.toggle()
                 }
-                HStack {
-                    Text("Intensity")
-                    Slider(value: intensity)
+                VStack {
+                    HStack {
+                        Text("Intensity\t")
+                        Slider(value: intensity)
+                    }
+                    HStack {
+                        Text("Radius\t\t")
+                        Slider(value: radius)
+                    }
+                    HStack {
+                        Text("Scale\t\t")
+                        Slider(value: scale)
+                    }
                 }
                 .padding(.vertical)
                 HStack {
@@ -127,10 +153,10 @@ struct ContentView: View {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(filterScale * 10, forKey: kCIInputScaleKey)
         }
 
         guard let outputImage = currentFilter.outputImage else { return }
