@@ -19,7 +19,17 @@ struct ContentView: View {
     @State private var isShowingFilterSheet = false
     @State private var processedImage: UIImage?
     @State private var isShowingAlert = false
+    @State private var filterName: String? = nil
     private let context = CIContext()
+    private let filters: [(String, CIFilter)] = [
+        ("Crystallize", .crystallize()),
+        ("Edges", .edges()),
+        ("Gaussian Blur", .gaussianBlur()),
+        ("Pixellate", .pixellate()),
+        ("Sepia Tone", .sepiaTone()),
+        ("Unsharp Mask", .unsharpMask()),
+        ("Vignette", .vignette()),
+    ]
 
     var body: some View {
         let intensity = Binding<Double>(
@@ -51,7 +61,7 @@ struct ContentView: View {
                 }
                 .padding(.vertical)
                 HStack {
-                    Button("Change filter") {
+                    Button(filterName ?? "Change filter") {
                         isShowingFilterSheet = true
                     }
                     Spacer()
@@ -86,29 +96,12 @@ struct ContentView: View {
             .actionSheet(isPresented: $isShowingFilterSheet) {
                 ActionSheet(
                     title: Text("Select a filter"),
-                    buttons: [
-                        .default(Text("Crystallize")) {
-                            setFilter(.crystallize())
-                        },
-                        .default(Text("Edges")) {
-                            setFilter(.edges())
-                        },
-                        .default(Text("Gaussian Blur")) {
-                            setFilter(.gaussianBlur())
-                        },
-                        .default(Text("Pixellate")) {
-                            setFilter(.pixellate())
-                        },
-                        .default(Text("Sepia Tone")) {
-                            setFilter(.sepiaTone())
-                        },
-                        .default(Text("Unsharp Mask")) {
-                            setFilter(.unsharpMask())
-                        },
-                        .default(Text("Vignette")) {
-                            setFilter(.vignette())
-                        },
-                    ]
+                    buttons: filters.map { name, filter in
+                        .default(Text(name)) {
+                            filterName = name
+                            setFilter(filter)
+                        }
+                    }
                 )
             }
             .padding([.horizontal, .bottom])
