@@ -13,18 +13,45 @@ struct ContentView: View {
 
     @State private var image: Image?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 0.5
+    @State private var filterScale = 0.5
     @State private var isShowingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var isShowingFilterSheet = false
     @State private var processedImage: UIImage?
+    @State private var isShowingAlert = false
+    @State private var filterName: String? = nil
     private let context = CIContext()
+    private let filters: [(String, CIFilter)] = [
+        ("Crystallize", .crystallize()),
+        ("Edges", .edges()),
+        ("Gaussian Blur", .gaussianBlur()),
+        ("Pixellate", .pixellate()),
+        ("Sepia Tone", .sepiaTone()),
+        ("Unsharp Mask", .unsharpMask()),
+        ("Vignette", .vignette()),
+    ]
 
     var body: some View {
         let intensity = Binding<Double>(
             get: { filterIntensity },
             set: {
                 filterIntensity = $0
+                applyProcessing()
+            }
+        )
+        let radius = Binding<Double>(
+            get: { filterRadius },
+            set: {
+                filterRadius = $0
+                applyProcessing()
+            }
+        )
+        let scale = Binding<Double>(
+            get: { filterScale },
+            set: {
+                filterScale = $0
                 applyProcessing()
             }
         )
@@ -44,18 +71,28 @@ struct ContentView: View {
                 .onTapGesture {
                     isShowingImagePicker.toggle()
                 }
-                HStack {
-                    Text("Intensity")
-                    Slider(value: intensity)
+                VStack {
+                    HStack {
+                        Text("Intensity\t")
+                        Slider(value: intensity)
+                    }
+                    HStack {
+                        Text("Radius\t\t")
+                        Slider(value: radius)
+                    }
+                    HStack {
+                        Text("Scale\t\t")
+                        Slider(value: scale)
+                    }
                 }
                 .padding(.vertical)
                 HStack {
-                    Button("Change filter") {
+                    Button(filterName ?? "Change filter") {
                         isShowingFilterSheet = true
                     }
                     Spacer()
                     Button("Save") {
-                        guard let processedImage = processedImage else { return }
+                        guard let processedImage = processedImage else { return isShowingAlert = true }
 
                         let imageSaver = ImageSaver()
                         imageSaver.successHandler = {
@@ -72,32 +109,25 @@ struct ContentView: View {
             .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
                 ImagePicker(image: $inputImage)
             }
+            .alert(isPresented: $isShowingAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("No image selected."),
+                    primaryButton: .default(Text("Select Image")) {
+                        isShowingImagePicker = true
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
             .actionSheet(isPresented: $isShowingFilterSheet) {
                 ActionSheet(
                     title: Text("Select a filter"),
-                    buttons: [
-                        .default(Text("Crystallize")) {
-                            setFilter(.crystallize())
-                        },
-                        .default(Text("Edges")) {
-                            setFilter(.edges())
-                        },
-                        .default(Text("Gaussian Blur")) {
-                            setFilter(.gaussianBlur())
-                        },
-                        .default(Text("Pixellate")) {
-                            setFilter(.pixellate())
-                        },
-                        .default(Text("Sepia Tone")) {
-                            setFilter(.sepiaTone())
-                        },
-                        .default(Text("Unsharp Mask")) {
-                            setFilter(.unsharpMask())
-                        },
-                        .default(Text("Vignette")) {
-                            setFilter(.vignette())
-                        },
-                    ]
+                    buttons: filters.map { name, filter in
+                        .default(Text(name)) {
+                            filterName = name
+                            setFilter(filter)
+                        }
+                    }
                 )
             }
             .padding([.horizontal, .bottom])
@@ -123,10 +153,10 @@ struct ContentView: View {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(filterScale * 10, forKey: kCIInputScaleKey)
         }
 
         guard let outputImage = currentFilter.outputImage else { return }
