@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var isShowingFilterSheet = false
     @State private var processedImage: UIImage?
+    @State private var isShowingAlert = false
     private let context = CIContext()
 
     var body: some View {
@@ -55,7 +56,7 @@ struct ContentView: View {
                     }
                     Spacer()
                     Button("Save") {
-                        guard let processedImage = processedImage else { return }
+                        guard let processedImage = processedImage else { return isShowingAlert = true }
 
                         let imageSaver = ImageSaver()
                         imageSaver.successHandler = {
@@ -71,6 +72,16 @@ struct ContentView: View {
             }
             .sheet(isPresented: $isShowingImagePicker, onDismiss: loadImage) {
                 ImagePicker(image: $inputImage)
+            }
+            .alert(isPresented: $isShowingAlert) {
+                Alert(
+                    title: Text("Error"),
+                    message: Text("No image selected."),
+                    primaryButton: .default(Text("Select Image")) {
+                        isShowingImagePicker = true
+                    },
+                    secondaryButton: .cancel()
+                )
             }
             .actionSheet(isPresented: $isShowingFilterSheet) {
                 ActionSheet(
